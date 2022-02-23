@@ -38,6 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      token: generateToken(user._id),
     })
   } else {
     res.status(400)
@@ -59,6 +60,7 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      token: generateToken(user._id),
     })
   } else {
     res.status(400)
@@ -68,15 +70,17 @@ const loginUser = asyncHandler(async (req, res) => {
 
 // @desc   Get user data
 // @route  GET /api/users/me
-// @access Public
+// @access Private
 const getMe = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id)
-  if (!user) {
-    res.status(400)
-    throw new Error('User not found')
-  }
-  res.status(200).json(user)
+  const { _id, email, name } = await User.findById(req.user.id)
+
+  res.status(200).json({ id: _id, email, name })
 })
+
+// Generate JTW
+const generateToken = id => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' })
+}
 
 module.exports = {
   registerUser,
