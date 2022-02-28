@@ -8,7 +8,8 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "client": " cd frontend && yarn start"
+    "client": "cd frontend && yarn start",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -20,6 +21,7 @@
     "mongoose": "^6.2.2"
   },
   "devDependencies": {
+    "concurrently": "^7.0.0",
     "nodemon": "^2.0.15"
   }
 }

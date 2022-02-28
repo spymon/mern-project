@@ -52,6 +52,20 @@ h3 {
   margin-bottom: 60px;
 }
 
+.name {
+  margin-left: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mgb-5 {
+  margin-bottom: 10px;
+}
+
 .header ul {
   display: flex;
   align-items: center;
@@ -94,12 +108,15 @@ h3 {
 
 .goal {
   background-color: #f4f4f4;
-  margin: 10px 0;
-  padding: 20px 0 10px;
+  padding: 10px;
   position: relative;
 }
 
-.goal .close {
+.goal:hover .mybtn {
+  opacity: 1;
+}
+
+.close {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -149,6 +166,43 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.mybtn {
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  color: #333;
+  padding: 5px;
+  background-color: inherit;
+  border: none;
+  transform: translateY(0px);
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.mybtn:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 1.1);
+}
+
+.red {
+  color: #d0342c;
+}
+
+.date {
+  display: block;
+  margin: 10px 0;
+  background-color: #fff;
+  color: #333;
+  font-weight: bold;
+  letter-spacing: 1.3;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 5px 0;
 }
 
 .btn svg {
